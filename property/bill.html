@@ -1,0 +1,392 @@
+<!-- manages the bill breakdown: audit -->
+
+<!-- owed, paid, cancelled. -->
+
+
+
+
+<!-- get all list and filter with tag -->
+
+
+
+<!-- just a table -->
+
+<!-- Expected = {billname + due date, tenantname + propertyaddress, amount, status(owed, paid, cancelled)} -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../assets/css/index.css" />
+    <style>
+      @media (max-width: 768px) {
+        .sidebar {
+          width: 100%;
+          position: relative;
+          display: none;
+        }
+        /* .navbar{
+          position: relative;
+        } */
+        .content {
+          margin-left: 0;
+        }
+
+        .sidebar-btn {
+          display: block;
+          position: fixed;
+          top: 10px;
+          right: 10px;
+          z-index: 1;
+          color: #56575c; /* Set the color of the toggler icon */
+        }
+        .navbar-brand-sm {
+          padding: 0;
+        }
+        .content {
+          margin-top: 50px;
+        }
+
+        .cardList .card .row{
+          flex-direction: column;
+        } 
+      .changeflex{
+          width: 100%;
+          flex-direction: column;
+          /* align-items: flex-start !important; */
+        }
+      .changeflex button{
+          margin-bottom: 10px;
+        }
+       }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navbar with toggle button -->
+    <nav
+      class="navbar navbar-expand-lg navbar-dark fixed-top px-3 align-items-center"
+    >
+      <a class="navbar-brand navbar-brand-sm" href="#"
+        ><img src="../assets/images/logo.png" alt=""
+      /></a>
+      <button
+        class="navbar-toggler sidebar-btn"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        onclick="toggleSidebar()"
+      >
+        x
+      </button>
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="sidebar vh-100">
+      <!-- Logo removed from the sidebar -->
+      <ul>
+      <li><a href="propertylist.html">Manage Property</a></li>
+      <li><a href="tenant.html">Tenants</a></li>
+      <li><a href="bill.html">Bills</a></li>
+      </ul>
+      <div class="godown">
+        <a href="#" class="btn btnbg col-12 mb-4">Request a Feature</a>
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="img">
+            <img src="../assets/images/Avatar(2).png" alt="" />
+          </div>
+          <div class="info">
+            <div class="d-flex justify-content-between">
+              <p>Layor Pan</p>
+              <img src="../assets/images/Button-base.png" alt="" />
+            </div>
+            <p>olivia@untitledui.com</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+        <div class="">
+          <h3>Bills<span class="number of tenant"></span></h3>
+          <p>Manage all bills paid by tenants</p>
+        </div>
+        <div class="card col-12 px-5">
+            <div class="row mt-4 justify-content-between" style="gap: 40px;">
+                <div class="col my-2">
+                <label for="propertyType" class="form-label">Property</label>
+                <select id="propertyType" name="propertyType" class="col-12">
+                    <option value="nill">All Property</option>
+                    <option value="other">Other</option>
+                </select>                  
+                </div>
+                <div class="col my-2">
+                <label for="propertyType" class="form-label">Flat</label>
+                <select id="propertyType" name="propertyType" class="col-12">
+                    <option value="nill">All Unition>
+                    <option value="other">Other</option>
+                </select>                  
+                </div>
+                <div class="col my-2">
+                <label for="propertyType" class="form-label">Bill</label>
+                <select id="propertyType" name="propertyType" class="col-12">
+                    <option value="nill">All bill</option>
+                    <option value="other">Other</option>
+                </select>                  
+                </div>
+            </div>
+            <div class="d-flex tab my-2">
+                <a href="#" class="whitebtn btn">Owed</a>
+                <a href="#" class="whitebtn btn">Paid</a>
+                <a href="#" class="whitebtn btn">Cancelled</a>
+            </div>
+            <div class="d-flex  justify-content-between align-items-center col-12">
+                <div class="search my-4">
+                    <input
+                    type="text"
+                    name="search"
+                    placeholder="Search"
+                    class="col-md-12"
+                    />
+                </div>
+                <div class="filter inputCard px-3">
+                    <label for="filter">Filter</label>
+                    <input type="radio">
+                </div>
+            </div>
+
+    <div id="dynamicContent">
+
+        <template id="tableTemplate">
+            <table class="table table-hover inputTable">
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" class="mx-2">Bill Details</th>
+                        <th>Tenant</th>
+                        <th>Amount Billed</th>
+                        <th>Amount Owed</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-end">
+                    <!-- Pagination links will be dynamically added here -->
+                </ul>
+            </nav>
+        </template>
+
+        <!-- Your existing template for list items -->
+        <template id="listItemTemplate">
+            <tr>
+                <td><div class="d-flex align-items-center"><div class=""><input type="checkbox" class="mx-2"></div><div class=""><h6><span data-billname></span></h6><p><span data-date></span></p></div></div></td>
+                <td><h6><span data-name></span></h6><p><span data-address></span></p></td>
+                <td><span data-amount_billed></span></td>
+                <td><span data-amount_owned></span></td>
+                <td>Mark as paid</td>
+            </tr>
+        </template>
+
+    </div>
+            
+
+        </div>
+
+
+    </div>
+
+
+
+    <script>
+        const itemsPerPage = 5;
+        const objectList = [
+            {
+                billname: "Lawma Bill",
+                date: "1 oct, 2222",
+                name: "Ariyibi Oke Ruth",
+                address: "2 bed room - Lekki House",
+                amount_billed: 12345,
+                amount_owned: 5000,
+            },
+            {
+                billname: "New Bill",
+                date: "1 oct, 2222",
+                name: "Jane Smith",
+                address: "2 bed room - Lekki House",
+                amount_billed: 12345,
+                amount_owned: 5000,
+            },
+            {
+                billname: "Lawma Bill",
+                date: "1 oct, 2222",
+                name: "Ariyibi Oke Ruth",
+                address: "2 bed room - Lekki House",
+                amount_billed: 12345,
+                amount_owned: 5000,
+            },
+            {
+                billname: "New Bill",
+                date: "1 oct, 2222",
+                name: "Jane Smith",
+                address: "2 bed room - Lekki House",
+                amount_billed: 12345,
+                amount_owned: 5000,
+            },
+            {
+                billname: "Lawma Bill",
+                date: "1 oct, 2222",
+                name: "Ariyibi Oke Ruth",
+                address: "2 bed room - Lekki House",
+                amount_billed: 12345,
+                amount_owned: 5000,
+            },
+            {
+                billname: "New Bill",
+                date: "1 oct, 2222",
+                name: "Jane Smith",
+                address: "2 bed room - Lekki House",
+                amount_billed: 12345,
+                amount_owned: 5000,
+            },
+            {
+                billname: "Lawma Bill",
+                date: "1 oct, 2222",
+                name: "Ariyibi Oke Ruth",
+                address: "2 bed room - Lekki House",
+                amount_billed: 12345,
+                amount_owned: 5000,
+            },
+            {
+                billname: "New Bill",
+                date: "1 oct, 2222",
+                name: "Jane Smith",
+                address: "2 bed room - Lekki House",
+                amount_billed: 12345,
+                amount_owned: 5000,
+            },
+            {
+                billname: "Lawma Bill",
+                date: "1 oct, 2222",
+                name: "Ariyibi Oke Ruth",
+                address: "2 bed room - Lekki House",
+                amount_billed: 12345,
+                amount_owned: 5000,
+            },
+            {
+                billname: "New Bill",
+                date: "1 oct, 2222",
+                name: "Jane Smith",
+                address: "2 bed room - Lekki House",
+                amount_billed: 12345,
+                amount_owned: 5000,
+            },
+        ];
+
+        const tableTemplate = document.getElementById('tableTemplate');
+        const listItemTemplate = document.getElementById('listItemTemplate');
+        const dynamicContent = document.getElementById('dynamicContent');
+
+        // Calculate the total number of pages
+        const totalPages = Math.ceil(objectList.length / itemsPerPage);
+
+        // Clone the table template
+        const table = tableTemplate.content.cloneNode(true);
+        const tbody = table.querySelector('tbody');
+
+        // Function to display items for a specific page
+        function displayItems(page) {
+            // Clear the table body
+            tbody.innerHTML = '';
+
+            // Calculate the start and end indices for the current page
+            const startIndex = (page - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+
+            // Loop through the items for the current page and append them to the table
+            for (let i = startIndex; i < endIndex && i < objectList.length; i++) {
+                const listItem = listItemTemplate.content.cloneNode(true);
+
+                // Replace placeholders with actual data
+                const obj = objectList[i];
+                listItem.querySelector('[data-billname]').textContent = obj.billname;
+                listItem.querySelector('[data-date]').textContent = obj.date;
+                listItem.querySelector('[data-name]').textContent = obj.name;
+                listItem.querySelector('[data-address]').textContent = obj.address;
+                listItem.querySelector('[data-amount_billed]').textContent = obj.amount_billed;
+                listItem.querySelector('[data-amount_owned]').textContent = obj.amount_owned;
+
+                // Append the row to the table body
+                tbody.appendChild(listItem);
+            }
+        }
+
+        // Function to update the pagination links
+        function updatePagination(currentPage) {
+            const paginationContainer = table.querySelector('.pagination');
+
+            // Clear existing pagination links
+            paginationContainer.innerHTML = '';
+
+            // Create pagination links
+            for (let i = 1; i <= totalPages; i++) {
+                const li = document.createElement('li');
+                li.classList.add('page-item');
+
+                const a = document.createElement('a');
+                a.classList.add('page-link');
+                a.href = '#';
+                a.textContent = i;
+
+                // Highlight the current page
+                if (i === currentPage) {
+                    li.classList.add('active');
+                }
+
+                // Add event listener to switch to the selected page
+                a.addEventListener('click', function () {
+                    displayItems(i);
+                    updatePagination(i);
+                });
+
+                li.appendChild(a);
+                paginationContainer.appendChild(li);
+            }
+        }
+
+        // Initial display of items and pagination
+        displayItems(1);
+        updatePagination(1);
+
+        // Append the populated table to the dynamic content container
+        dynamicContent.appendChild(table);
+
+    </script>
+
+</body>
+</html>

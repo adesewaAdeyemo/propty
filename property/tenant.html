@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../assets/css/index.css" />
+    <style>
+      @media (max-width: 768px) {
+        .sidebar {
+          width: 100%;
+          position: relative;
+          display: none;
+        }
+        /* .navbar{
+          position: relative;
+        } */
+        .content {
+          margin-left: 0;
+        }
+
+        .sidebar-btn {
+          display: block;
+          position: fixed;
+          top: 10px;
+          right: 10px;
+          z-index: 1;
+          color: #56575c; /* Set the color of the toggler icon */
+        }
+        .navbar-brand-sm {
+          padding: 0;
+        }
+        .content {
+          margin-top: 50px;
+        }
+
+        .cardList .card .row{
+          flex-direction: column;
+        } 
+      .changeflex{
+          width: 100%;
+          flex-direction: column;
+          /* align-items: flex-start !important; */
+        }
+      .changeflex button{
+          margin-bottom: 10px;
+        }
+       }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navbar with toggle button -->
+    <nav
+      class="navbar navbar-expand-lg navbar-dark fixed-top px-3 align-items-center"
+    >
+      <a class="navbar-brand navbar-brand-sm" href="#"
+        ><img src="../assets/images/logo.png" alt=""
+      /></a>
+      <button
+        class="navbar-toggler sidebar-btn"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        onclick="toggleSidebar()"
+      >
+        x
+      </button>
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="sidebar vh-100">
+      <!-- Logo removed from the sidebar -->
+      <ul>
+      <li><a href="propertylist.html">Manage Property</a></li>
+      <li><a href="tenant.html">Tenants</a></li>
+      <li><a href="bill.html">Bills</a></li>
+      </ul>
+      <div class="godown">
+        <a href="#" class="btn btnbg col-12 mb-4">Request a Feature</a>
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="img">
+            <img src="../assets/images/Avatar(2).png" alt="" />
+          </div>
+          <div class="info">
+            <div class="d-flex justify-content-between">
+              <p>Layor Pan</p>
+              <img src="../assets/images/Button-base.png" alt="" />
+            </div>
+            <p>olivia@untitledui.com</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+      <div class="d-flex  justify-content-between align-items-center col-12">
+        <div class="">
+          <h3>Tenants<span class="number of tenant">(20)</span></h3>
+          <p>Manage all your tenants and the bills paid yearly</p>
+        </div>
+        <button type="button" class="btn btnbg mx-3" data-bs-toggle="modal" data-bs-target="#addProperty">
+        Add Tenant
+        </button>
+      </div>
+
+      <div class="d-flex  justify-content-between align-items-center col-12">
+        <div class="search my-4">
+            <input
+            type="text"
+            name="search"
+            placeholder="Search"
+            class="col-md-12"
+            />
+        </div>
+        <div class="filter inputCard px-3 py-2">
+            <label for="filter">Filter</label>
+            <input type="radio">
+        </div>
+    </div>
+
+
+      <div id="dynamicContent">
+
+        <div class="cardList" id="objectList">
+
+        <template id="listItemTemplate">
+          <div class="list-group-item mb-3">
+          <div class="card col-12 p-4">
+            <div class="d-flex align-items-center">
+              <h4><span data-name></span></h4>
+              <span class="update mx-1">Active</span>
+            </div>
+            <p><span data-address></span></p>
+            <div class="row mt-4 justify-content-between" style="gap: 40px;">
+
+              <div class="col sharpcard px-4 py-2">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="sharpcard-text">
+                    <p>Number of Bills</p>
+                    <h4><span data-bill></span></h4>
+                  </div>
+                  <div class="sharpcard-icon">
+                    <i class="bi bi-file-earmark"></i>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col sharpcard px-4 py-2">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="sharpcard-text">
+                    <p>Amount Billed</p>
+                    <h4><span data-amount></span></h4>
+                  </div>
+                  <div class="sharpcard-icon">
+                    <i class="bi bi-database"></i>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col sharpcard px-4 py-2">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="sharpcard-text">
+                    <p>Amount outstanding</p>
+                    <h4><span data-outstanding></span></h4>
+                  </div>
+                  <div class="sharpcard-icon">
+                    <i class="bi bi-exclamation-circle"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+        </template>
+
+        </div>
+        
+      </div>
+
+    </div>
+
+
+
+
+
+
+
+    <!-- Modal -->
+<div class="modal fade" id="addProperty" tabindex="-1" aria-labelledby="addPropertyLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content p-3">
+      <div class="modal-body">
+        <form>
+          <div class="d-flex justify-content-between form-head">
+            <h4>Create Bill</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <p>Set up a new bill and configure settings</p>
+          <div class="my-2">
+              <label for="propertyName" class="form-label">Bill Name</label>
+              <input type="text" class="form-control" id="propertyName" placeholder="Enter a name" required>
+          </div>
+          <div class="my-2">
+              <label for="propertyName" class="form-label">Amount</label>
+              <div class="d-flex comboInput col-12 border">
+                <select id="propertyType" name="propertyType">
+                    <option value="NGN">NGN</option>
+                    <option value="$">$</option>
+                </select>  
+                <input type="text" class="col-10">                
+              </div>
+          </div>
+
+          <div class="row">
+            <div class="col my-2">
+              <label for="propertyType" class="form-label">Frequency</label>
+              <select id="propertyType" name="propertyType" class="col-12">
+                  <option value="nill">Once a month</option>
+                  <option value="residential">Once in a year</option>
+                  <option value="other">Other</option>
+              </select>                  
+            </div>
+            <div class="col my-2">
+              <label for="propertyType" class="form-label">Bill Due Date</label>
+              <select id="propertyType" name="propertyType" class="col-12">
+                  <option value="nill">Once recieved</option>
+                  <option value="other">Other</option>
+              </select>                  
+            </div>
+          </div>
+
+          <div class="my-2 form-check">
+              <input type="checkbox" class="form-check-input" id="check1" required>
+              <label class="form-check-label" for="check1">Allow part payment </label>
+          </div>
+
+          <div class="row">
+            <div class="col my-2">
+              <label for="propertyType" class="form-label">Account to pay into</label>
+              <select id="propertyType" name="propertyType" class="col-12">
+                  <option value="nill">Once a month</option>
+                  <option value="residential">Once in a year</option>
+                  <option value="other">Other</option>
+              </select>                  
+            </div>
+
+            <div class="col my-2">
+              <label for="propertyType" class="form-label">Select Bank</label>
+              <select id="propertyType" name="propertyType" class="col-12">
+                  <option value="nill">Select</option>
+                  <option value="nill">UBA</option>
+                  <option value="nill">Access</option>
+                  <option value="other">Other</option>
+              </select>                  
+            </div>
+          </div>
+
+          <div class="my-2">
+              <label for="accountName" class="form-label">Account Name</label>
+              <input type="text" class="form-control" id="propertyName" placeholder="Autofill" required disabled>
+          </div>
+
+          <div class="my-2 d-flex align-items-center inputCard p-3">
+            <label class="switch">
+              <input type="checkbox">
+              <span class="slider round"></span>
+            </label>
+            <span class="toggletext px-2">Allow online payment</span>
+          </div>
+
+          <div class="my-2 inputCard p-3">
+            <div class="d-flex align-items-center">
+              <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+              </label>
+              <span class="toggletext px-2">Send bill notification</span>
+            </div>
+            <div class="d-flex mt-2 ">
+              <p>A message is sent to the tenant to remind them about the bill</p>
+              <a href="">Preview Message</a>
+            </div>
+            <label for="propertyType" class="form-label">Notify tenant on ?</label>
+            <select id="propertyType" name="propertyType" class="col-12">
+                <option value="nill">Select</option>
+                <option value="other">Other</option>
+            </select>                  
+          </div>
+
+          <div class="my-2 inputCard p-3">
+            <div class="d-flex align-items-center">
+              <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+              </label>
+              <span class="toggletext px-2">Allow overdue reminder</span>
+            </div>
+            <div class="d-flex mt-2">
+              <p>A message is sent to the tenant to remind them about the bill</p>
+              <a href="">Preview Message</a>
+            </div>
+            <label for="propertyType" class="form-label">Frequency ?</label>
+            <select id="propertyType" name="propertyType" class="col-12">
+                <option value="nill">Select</option>
+                <option value="other">Other</option>
+            </select>                  
+          </div>
+
+          <div class="my-2">
+            <input type="checkbox" id="toggle" name="toggle">
+            <label for="toggle">Check this if the bill you creating is for rent</label>
+          </div>
+
+          <button type="button" class="btn btnbg col-12 mb-4" data-bs-dismiss="modal">Save Details</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <script>
+      const objectList = [
+        {
+          name: "Ariyibi Oke Ruth",
+          address: "2 bed room - Lekki House",
+          bill: 12345,
+          amount: 5000,
+          outstanding: 7345,
+        },
+        {
+          name: "Jane Smith",
+          address: "456 Oak Ave",
+          bill: 67890,
+          amount: 8000,
+          outstanding: 75890,
+        },
+        {
+          name: "Ariyibi Oke Ruth",
+          address: "2 bed room - Lekki House",
+          bill: 12345,
+          amount: 5000,
+          outstanding: 7345,
+        },
+        {
+          name: "Jane Smith",
+          address: "456 Oak Ave",
+          bill: 67890,
+          amount: 8000,
+          outstanding: 75890,
+        },
+      ];
+
+    const listItemTemplate = document.getElementById('listItemTemplate');
+
+    // Get the container where the list items will be inserted
+    const objectListContainer = document.getElementById('objectList');
+
+    // Loop through the list and append the template for each item
+    objectList.forEach(obj => {
+      // Clone the template content
+      const listItem = listItemTemplate.content.cloneNode(true);
+
+      // Replace placeholders with actual data
+      listItem.querySelector('[data-name]').textContent = obj.name;
+      listItem.querySelector('[data-address]').textContent = obj.address;
+      listItem.querySelector('[data-bill]').textContent = obj.bill;
+      listItem.querySelector('[data-amount]').textContent = obj.amount;
+      listItem.querySelector('[data-outstanding]').textContent = obj.outstanding;
+
+      // Append the cloned and modified template to the container
+      objectListContainer.appendChild(listItem);
+    });
+
+</script>
+
+  <script src="../assets/js/index.js"></script>
+  </body>
+</html>

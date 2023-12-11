@@ -1,0 +1,263 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Inter", sans-serif;
+  color: #344054 !important;
+  gap: 32;
+}
+ul,
+li {
+  text-decoration: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+select{
+  padding: 7px 10px;
+  color: #c7c7ca !important;
+  background-color: #fff;
+  border: 1px solid #b8b2b2;
+  border-radius: 6px;
+}
+p {
+  font-size: 14px;
+}
+a {
+  text-decoration: none;
+}
+.text-right {
+  text-align: right;
+}
+input::placeholder {
+  color: #c7c7ca !important;
+}
+.card {
+  border: none !important;
+  outline: transparent;
+  padding: 30px, 32px, 30px, 32px;
+  background-color: #fff !important;
+  border-radius: 12px !important;
+  box-shadow: 0px 0px 56px rgba(200, 200, 201, 0.2),
+    0px 0px 56px rgba(195, 196, 197, 0.3);
+}
+ .sharpcard {
+  border: none !important;
+  outline: transparent;
+  background-color: #fff !important;
+  border-radius: 6px !important;
+  box-shadow: 0px 0px 6px rgba(200, 200, 201, 0.2),
+    0px 0px 6px rgba(195, 196, 197, 0.3);
+}
+
+
+
+/* login form */
+.form-head {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24.2px;
+  color: #344054;
+}
+.form-check,
+label {
+  font-size: 14px;
+}
+.btnbg,
+.bluebg {
+  background: #506fde;
+  color: #fff;
+}
+.btnbg:hover {
+  background: #fff;
+  color: #506fde;
+  border: 1px solid #506fde;
+}
+.btnbglight{
+  background: #fff;
+  color: #506fde;
+  border: 1px solid #506fde;
+}
+.btnbglight:hover{
+  background: #506fde !important;
+  color: #fff !important;
+}
+.highlighttext {
+  color: #506fde;
+}
+
+
+
+
+/* sidebar */
+.sidebar ul li a {
+  font-weight: 600;
+  font-size: 20px;
+  color: #b8b2b2;
+}
+.sidebar ul li a:hover {
+  color: #344054;
+}
+.sidebar ul li a:active,
+.sidebar ul li a:focus {
+  color: #344054;
+}
+.sidebar ul li {
+  padding: 10px 0;
+}
+.sidebar {
+  position: fixed;
+  height: 100%;
+  width: 293px;
+  padding: 30px 32px 30px 32px;
+  transition: margin-left 0.3s;
+  margin-top: 80px;
+}
+.navbar{
+  width: 293px;
+}
+.sidebar-btn {
+  display: none;
+}
+.navbar-brand-sm {
+  padding: 20px 0;
+}
+.godown {
+  position: absolute;
+  bottom: 100px;
+}
+.info {
+  font-size: 14px;
+}
+
+
+
+/* content */
+.content {
+  margin-left: 293px;
+  padding: 40px 50px;
+}
+.search input{
+  border-radius: 6px;
+  border: 1px solid #d7d8d9;
+  outline: #b5b7ba;
+  padding: 5px 10px;
+}
+.search input::placeholder{
+  color: #353535 !important;
+}
+
+.update{
+  font-size: 12px;
+  padding: 5px 10px;
+  color: #027A48;
+  background-color: rgba(175, 222, 181, 0.2);
+}
+.sharpcard-icon{
+  font-size: 30px;
+  color: #506fde !important;
+}
+
+
+/* modal */
+.comboInput select, .comboInput input{
+  border: transparent !important;
+}
+
+.whitebtn:hover, .whitebtn:focus{
+  background-color: #fff;
+  border: none !important;
+  outline: transparent;
+  background-color: #fff !important;
+  border-radius: 6px !important;
+  box-shadow: 0px 0px 6px rgba(200, 200, 201, 0.2),
+    0px 0px 6px rgba(195, 196, 197, 0.3);
+}
+
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 22px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 15px;
+  width: 15px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #506fde;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #506fde;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+.toggletext{
+  font-size: 16px;
+}
+.inputCard {
+  border: none !important;
+  outline: transparent;
+  background-color: #fff !important;
+  border-radius: 6px !important;
+  box-shadow: 0px 0px 1px rgba(128, 128, 144, 0.2),
+    0px 0px 1px rgba(107, 110, 113, 0.3);
+}
+.inputCard a{
+  font-size: 12px;
+}
+.inputTable{
+  border: 1px solid #e2dcdc;
+}
+table h6, table p, table td{
+  color: #7d7c7c !important;
+}
+table th{
+  color: #575858 !important;
+}
