@@ -24,21 +24,19 @@
 
             <form>
                 <div class="form-head my-4">
-                    <h4>Login</h4>
+                    <h4>Forgot Password</h4>
                 </div>
                 <div class="my-4">
                     <label for="inputEmail1" class="form-label">Email address</label>
                     <input type="email" class="form-control" id="inputEmail1" aria-describedby="emailHelp" placeholder="Email" required>
-                <div class="my-4">
-                    <label for="inputPassword1" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="inputPassword" placeholder="Password" required>
                 </div>
-                <div class="my-4 text-right highlighttext col-12">
-                    <a href="forgot.html">Forgot password</a>
+                <p>You will recieve a link to reset your password, If you have existing accont</p>
+                <div class="my-4 text-right highlighttext col-12" id="countdown">
+                    <a href="">00:00</a>
                 </div>
-                <a href="pages/propertylist.html" class="btn btnbg col-12 mb-4">Login</a>
+                <a href="pages/propertylist.html" class="btn btnbg col-12 mb-4">Send</a>
                 <div class="text-center col-12">
-                    <h6>Not a user? <a href="index.html" class="highlighttext"> Register</a></h6>                        
+                    <h6>Back to <a href="login.html" class="highlighttext"> Login</a></h6>                        
                 </div>
 
             </form>
@@ -53,6 +51,29 @@
   </div>
 </section>
 
+<script>
+  const countdownElement = document.getElementById("countdown");
+const a = document.querySelector(".a");
 
+let seconds = 59;
+
+const countdownInterval = setInterval(() => {
+  seconds--;
+
+  const minutesText = Math.floor(seconds / 60)
+    .toString()
+    .padStart(2, "0");
+  const secondsText = (seconds % 60).toString().padStart(2, "0");
+  const timeText = `${minutesText}:${secondsText}`;
+
+  countdownElement.textContent = timeText;
+
+  if (seconds === 0) {
+    clearInterval(countdownInterval);
+    countdownElement.style.color = "#000";
+  }
+}, 1000);
+
+</script>
 </body>
 </html>

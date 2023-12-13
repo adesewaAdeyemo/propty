@@ -185,7 +185,7 @@
                   <th><input type="checkbox" class="mx-2" />Bill Details</th>
                   <th>Tenant</th>
                   <th>Amount Billed</th>
-                  <th>Amount Owed</th>
+                  <th>Amount Paid</th>
                   <th></th>
                 </tr>
               </thead>
@@ -216,7 +216,7 @@
               </td>
               <td><span data-amount_billed></span></td>
               <td><span data-amount_owned></span></td>
-              <td><span class="d-flex justify-content-between"><span class="blurcard-icon"><a href="billdetail.html">Mark as paid</a></span><i class="bi bi-three-dots-vertical"></i></span></td>
+              <td><span class="d-flex justify-content-between"><span class="blurcard-icon"><a href="#">Download receipt</a></span><i class="bi bi-three-dots-vertical"></i></span></td>
             </tr>
           </template>
         </div>

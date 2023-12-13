@@ -121,7 +121,7 @@
           <h3>Tenants<span class="number of tenant">(20)</span></h3>
           <p>Manage all your tenants and the bills paid yearly</p>
         </div>
-        <button type="button" class="btn btnbg mx-3" data-bs-toggle="modal" data-bs-target="#addProperty">
+        <button type="button" class="btn btnbg mx-3" data-bs-toggle="modal" data-bs-target="#addTenant">
         Add Tenant
         </button>
       </div>
@@ -147,7 +147,7 @@
         <div class="cardList" id="objectList">
 
         <template id="listItemTemplate">
-          <div class="list-group-item mb-3">
+          <a href="tenantdetail.html" class="list-group-item mb-3">
           <div class="card col-12 p-4">
             <div class="d-flex align-items-center">
               <h4><span data-name></span></h4>
@@ -193,7 +193,7 @@
               </div>
             </div>
           </div>
-          </div>
+        </a>
         </template>
 
         </div>
@@ -209,7 +209,7 @@
 
 
     <!-- Modal -->
-<div class="modal fade" id="addProperty" tabindex="-1" aria-labelledby="addPropertyLabel" aria-hidden="true">
+<div class="modal fade" id="addTenant" tabindex="-1" aria-labelledby="addPropertyLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content p-3">
       <div class="modal-body">
@@ -319,29 +319,10 @@
         },
       ];
 
-    const listItemTemplate = document.getElementById('listItemTemplate');
-
-    // Get the container where the list items will be inserted
-    const objectListContainer = document.getElementById('objectList');
-
-    // Loop through the list and append the template for each item
-    objectList.forEach(obj => {
-      // Clone the template content
-      const listItem = listItemTemplate.content.cloneNode(true);
-
-      // Replace placeholders with actual data
-      listItem.querySelector('[data-name]').textContent = obj.name;
-      listItem.querySelector('[data-address]').textContent = obj.address;
-      listItem.querySelector('[data-bill]').textContent = obj.bill;
-      listItem.querySelector('[data-amount]').textContent = obj.amount;
-      listItem.querySelector('[data-outstanding]').textContent = obj.outstanding;
-
-      // Append the cloned and modified template to the container
-      objectListContainer.appendChild(listItem);
-    });
-
 </script>
 
+  <script src="../assets/js/table.js"></script>
+  <script src="../assets/js/cardlist.js"></script>
   <script src="../assets/js/index.js"></script>
   </body>
 </html>

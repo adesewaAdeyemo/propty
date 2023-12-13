@@ -87,7 +87,24 @@ label {
 .highlighttext {
   color: #506fde;
 }
-
+.btnbgsky{
+  background: rgba(140, 158, 247, 0.15);
+  color: #506fde;
+}
+.btnbgsky:hover {
+  background: #fff;
+  color: #506fde;
+  border: 1px solid #506fde;
+}
+.btnbgyellow{
+  background: rgba(239, 222, 165, 0.2);
+  color: #2c2304;
+}
+.btnbgsky:hover {
+  background: #fff;
+  color: #506fde;
+  border: 1px solid #506fde;
+}
 
 
 
@@ -159,21 +176,34 @@ label {
   font-size: 30px;
   color: #506fde !important;
 }
-
+.blurcard-icon{
+  font-size: 16px;
+  color: #6886f0 !important;
+}
+.blurcard-icon a{
+  font-size: 14px;
+}
+.blurtext{
+  color: #9b9b9d !important;
+}
 
 /* modal */
 .comboInput select, .comboInput input{
   border: transparent !important;
 }
+.whitebtn{
+  color: #707174 !important;
+}
 
-.whitebtn:hover, .whitebtn:focus{
+.whitebtn:hover, .whitebtn:focus, .active{
   background-color: #fff;
+  color: #000206 !important;
   border: none !important;
   outline: transparent;
   background-color: #fff !important;
   border-radius: 6px !important;
-  box-shadow: 0px 0px 6px rgba(200, 200, 201, 0.2),
-    0px 0px 6px rgba(195, 196, 197, 0.3);
+  box-shadow: 0px 0px 6px rgba(174, 174, 175, 0.2),
+    0px 0px 6px rgba(154, 154, 155, 0.3);
 }
 
 
@@ -260,8 +290,4 @@ table h6, table p, table td{
 }
 table th{
   color: #575858 !important;
-}
-
-.changeflex button  {
-  
 }

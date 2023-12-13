@@ -118,100 +118,121 @@
 
     <!-- Main Content -->
     <div class="content">
-      <div class="d-flex  justify-content-between align-items-center col-12">
+      <div class="d-flex mb-3 justify-content-between align-items-center col-12">
         <div class="">
-          <h3>Properties<span class="number of tenant">(2)</span></h3>
-          <p>Manage all your properties</p>
+          <h3>Property Details</h3>
+          <h6 class="py-2"><span class="blurtext">Properties List </span> <span class="blurcard-icon"> <i class="bi bi-chevron-right px-3"></i> Ikeja House - 23 Idowu Taylor, Lekki-Ajah, Lagos. </span></h6>
         </div>
         <div class="d-flex changeflex">
-          <button type="button" class="btn btnbglight mx-3 px-5" data-bs-toggle="modal" data-bs-target="#addBill">
-            Add bill
+          <button type="button" class="btn btnbgsky mx-3 px-2" data-bs-toggle="modal" data-bs-target="#addBill">
+            <i class="bi bi-pencil-square px-2"></i>Edit Property
           </button>
-          <button type="button" class="btn btnbg mx-3" data-bs-toggle="modal" data-bs-target="#addProperty">
-            Add Property
+          <button type="button" class="btn btnbgyellow mx-3 px-2" data-bs-toggle="modal" data-bs-target="#addBill">
+            <i class="bi bi-person-gear px-2"></i>Set To Inactive
           </button>
-        </div>
-      </div>
-      <div class="d-flex tab">
-        <a href="propertylist.html" class="whitebtn btn">Property List</a>
-        <a href="managebills.html" class="whitebtn btn">Manage Bills</a>
-        <!-- <a href="#" data-page="./bill" class="whitebtn btn">Manage Bills</a> -->
-      </div>
-      <div class="d-flex  justify-content-between align-items-center col-12 changeflex">
-        <div class="search my-4">
-          <input
-            type="text"
-            name="search"
-            placeholder="Search"
-            class="col-md-12"
-          />
-        </div>
-        <div class="filter inputCard px-3 py-2 d-flex justify-content-between mb-3 col-md-1 col-sm-12">
-          <label for="filter">Filter</label>
-          <input type="radio">
         </div>
       </div>
 
- 
-      <div id="dynamicContent">
 
         <div class="cardList" id="objectList">
 
         <template id="listItemTemplate">
-          <a href="property.html" class="list-group-item mb-3">
+          <div class="list-group-item mb-3">
           <div class="card col-12 p-4">
             <div class="d-flex align-items-center">
               <h4><span data-name></span></h4>
-              <span class="update mx-1">Active</span>
             </div>
             <p><span data-address></span></p>
             <div class="row mt-4 justify-content-between" style="gap: 40px;">
 
-              <div class="col sharpcard px-4 py-2">
+              <div class="col sharpcard px-4">
                 <div class="d-flex justify-content-between align-items-center">
-                  <div class="sharpcard-text">
-                    <p>Number of Bills</p>
-                    <h4><span data-bill></span></h4>
-                  </div>
-                  <div class="sharpcard-icon">
-                    <i class="bi bi-houses"></i>
+                  <div class="sharpcard-text py-2">
+                    <p>Amount</p>
+                    <h4><span data-amount></span></h4>
                   </div>
                 </div>
               </div>
               
-              <div class="col sharpcard px-4 py-2">
+              <div class="col sharpcard px-4">
                 <div class="d-flex justify-content-between align-items-center">
-                  <div class="sharpcard-text">
-                    <p>Amount Billed</p>
-                    <h4><span data-amount></span></h4>
-                  </div>
-                  <div class="sharpcard-icon">
-                    <i class="bi bi-person"></i>
+                  <div class="sharpcard-text py-2">
+                    <p>Number of tenant paying this bill</p>
+                    <h4><span data-nbill></span></h4>
                   </div>
                 </div>
               </div>
 
-              <div class="col sharpcard px-4 py-2">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="sharpcard-text">
-                    <p>Amount outstanding</p>
-                    <h4><span data-outstanding></span></h4>
-                  </div>
-                  <div class="sharpcard-icon">
-                    <i class="bi bi-file-earmark"></i>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
-        </a>
+          </div>
         </template>
 
+        </div>
 
-      </div>
-        
-      </div>
 
+
+      <div class="card col-12 p-4">
+
+          <div class="d-flex tab">
+            <a href="#" class="whitebtn btn">All</a>
+            <a href="#" class="whitebtn btn">Rented</a>
+            <a href="#" data-page="./bill" class="whitebtn btn">Not Rented</a>
+          </div>
+          <div class="d-flex  justify-content-between align-items-center col-12 changeflex">
+            <div class="search my-4">
+              <input
+                type="text"
+                name="search"
+                placeholder="Search"
+                class="col-md-12"
+              />
+            </div>
+            <div class="filter inputCard px-3 py-2 d-flex justify-content-between mb-3 col-md-1 col-sm-12 align-items-center">
+              <label for="filter">Filter</label>
+              <i class="bi bi-funnel sharpcard-icon"></i>
+            </div>
+          </div>
+
+
+
+        <div id="dynamicContent">
+          <template id="tableTemplate">
+            <table class="table table-hover inputTable">
+              <thead>
+                <tr>
+                  <th><input type="checkbox" class="mx-2" />Tenant Details</th>
+                  <th>Amount owned</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+            <nav aria-label="Page navigation">
+              <ul class="pagination justify-content-end">
+                <!-- Pagination links will be dynamically added here -->
+              </ul>
+            </nav>
+          </template>
+
+          <!-- Your existing template for list items -->
+          <template id="tableItemTemplate">
+            <tr>
+              <td>
+                <div class="d-flex align-items-center">
+                  <div class=""><input type="checkbox" class="mx-2" /></div>
+                  <div class="">
+                    <h6><span data-tenant_name></span></h6>
+                    <p><span data-date></span></p>
+                  </div>
+                </div>
+              </td>
+              <td><span data-amount_owned></span></td>
+              <td><span class="d-flex justify-content-between"><span class="blurcard-icon"><a href="#">Mark as paid</a></span><i class="bi bi-three-dots-vertical"></i></span></td>
+            </tr>
+          </template>
+        </div>
+      </div>
     </div>
 
 
@@ -220,7 +241,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="addProperty" tabindex="-1" aria-labelledby="addBillLabel" aria-hidden="true">
+<div class="modal fade" id="addBill" tabindex="-1" aria-labelledby="addBillLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content p-3 ">
       <div class="modal-body">
@@ -273,7 +294,7 @@
 
 
     <!-- Modal -->
-<div class="modal fade" id="addBill" tabindex="-1" aria-labelledby="addPropertyLabel" aria-hidden="true">
+<div class="modal fade" id="addProperty" tabindex="-1" aria-labelledby="addPropertyLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content p-3">
       <div class="modal-body">
@@ -410,40 +431,131 @@
       const objectList = [
         {
           id: 1,
-          name: "Ikeja House - 23 Idowu Taylor, Lekki-Ajah, Lagos.",
-          address: "2 bed room - Lekki House",
-          bill: 12345,
-          amount: 5000,
-          outstanding: 7345,
-        },
-        {
-          id: 2,
-          name: "Jane Smith",
-          address: "456 Oak Ave",
-          bill: 67890,
-          amount: 8000,
-          outstanding: 75890,
-        },
-        {
-          id:3,
           name: "Ariyibi Oke Ruth",
           address: "2 bed room - Lekki House",
-          bill: 12345,
+          nbill: 7,
           amount: 5000,
-          outstanding: 7345,
-        },
-        {
-          id:4,
-          name: "Jane Smith",
-          address: "456 Oak Ave",
-          bill: 67890,
-          amount: 8000,
-          outstanding: 75890,
         },
       ];
 
+
+
+const listItemTemplate = document.getElementById("listItemTemplate");
+
+// Get the container where the list items will be inserted
+const objectListContainer = document.getElementById("objectList");
+
+// Loop through the list and append the template for each item
+objectList.forEach((obj) => {
+  // Clone the template content
+  const listItem = listItemTemplate.content.cloneNode(true);
+
+  // Replace placeholders with actual data
+  listItem.querySelector("[data-name]").textContent = obj.name;
+  listItem.querySelector("[data-address]").textContent = obj.address;
+  listItem.querySelector("[data-nbill]").textContent = obj.nbill;
+  listItem.querySelector("[data-amount]").textContent = obj.amount;
+
+  // Append the cloned and modified template to the container
+  objectListContainer.appendChild(listItem);
+});
+
+
+
+
+
+    const itemsPerPage = 5;
+    const tableObjectList = [
+        {
+          tenant_name: "Lawma Bill",
+          date: "1 oct, 2222",
+          amount_owned: 5000,
+        },
+        {
+          tenant_name: "New Bill",
+          date: "1 oct, 2222",
+          amount_owned: 5000,
+        },
+    ];
+
+const tableTemplate = document.getElementById("tableTemplate");
+const tableItemTemplate = document.getElementById("tableItemTemplate");
+const dynamicContent = document.getElementById("dynamicContent");
+
+// Calculate the total number of pages
+const totalPages = Math.ceil(tableObjectList.length / itemsPerPage);
+
+// Clone the table template
+const table = tableTemplate.content.cloneNode(true);
+const tbody = table.querySelector("tbody");
+
+// Function to display items for a specific page
+function displayItems(page) {
+  // Clear the table body
+  tbody.innerHTML = "";
+
+  // Calculate the start and end indices for the current page
+  const startIndex = (page - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+
+  // Loop through the items for the current page and append them to the table
+  for (let i = startIndex; i < endIndex && i < tableObjectList.length; i++) {
+    const listItem = tableItemTemplate.content.cloneNode(true);
+
+    // Replace placeholders with actual data
+    const obj = tableObjectList[i];
+    listItem.querySelector("[data-tenant_name]").textContent = obj.tenant_name;
+    listItem.querySelector("[data-date]").textContent = obj.date;
+    listItem.querySelector("[data-amount_owned]").textContent = obj.amount_owned;
+      
+
+    // Append the row to the table body
+    tbody.appendChild(listItem);
+  }
+}
+
+
+
+function updatePagination(currentPage) {
+  const paginationContainer = table.querySelector(".pagination");
+
+  // Clear existing pagination links
+  paginationContainer.innerHTML = "";
+
+  // Create pagination links
+  for (let i = 1; i <= totalPages; i++) {
+    const li = document.createElement("li");
+    li.classList.add("page-item");
+
+    const a = document.createElement("a");
+    a.classList.add("page-link");
+    a.href = "#";
+    a.textContent = i;
+
+    // Highlight the current page
+    if (i === currentPage) {
+      li.classList.add("active");
+    }
+
+    // Add event listener to switch to the selected page
+    a.addEventListener("click", function () {
+      displayItems(i);
+      updatePagination(i);
+    });
+
+    li.appendChild(a);
+    paginationContainer.appendChild(li);
+  }
+}
+
+// Initial display of items and pagination
+displayItems(1);
+updatePagination(1);
+
+// Append the populated table to the dynamic content container
+dynamicContent.appendChild(table);
+
 </script>
-  <script src="../assets/js/table.js"></script>
   <script src="../assets/js/cardlist.js"></script>
   <script src="../assets/js/index.js"></script>
   </body>

@@ -156,7 +156,7 @@
         <div class="cardList" id="objectList">
 
         <template id="listItemTemplate">
-          <div class="list-group-item mb-3">
+          <a href="billdetail.html" class="list-group-item mb-3">
           <div class="card col-12 p-4">
             <div class="d-flex align-items-center">
               <h4><span data-name></span></h4>
@@ -184,7 +184,7 @@
 
             </div>
           </div>
-          </div>
+        </a>
         </template>
 
         </div>
@@ -388,24 +388,28 @@
     <script>
       const objectList = [
         {
+          id: 1,
           name: "Ariyibi Oke Ruth",
           address: "2 bed room - Lekki House",
           nbill: 7,
           amount: 5000,
         },
         {
+          id: 2,
           name: "Jane Smith",
           address: "456 Oak Ave",
           nbill: 9,
           amount: 8000,
         },
         {
+          id: 4,
           name: "Ariyibi Oke Ruth",
           address: "2 bed room - Lekki House",
           nbill: 7,
           amount: 5000,
         },
         {
+          id: 4,
           name: "Jane Smith",
           address: "456 Oak Ave",
           nbill: 5,
@@ -413,28 +417,33 @@
         },
       ];
 
-    const listItemTemplate = document.getElementById('listItemTemplate');
 
-    // Get the container where the list items will be inserted
-    const objectListContainer = document.getElementById('objectList');
 
-    // Loop through the list and append the template for each item
-    objectList.forEach(obj => {
-      // Clone the template content
-      const listItem = listItemTemplate.content.cloneNode(true);
+const listItemTemplate = document.getElementById("listItemTemplate");
 
-      // Replace placeholders with actual data
-      listItem.querySelector('[data-name]').textContent = obj.name;
-      listItem.querySelector('[data-address]').textContent = obj.address;
-      listItem.querySelector('[data-nbill]').textContent = obj.nbill;
-      listItem.querySelector('[data-amount]').textContent = obj.amount;
+// Get the container where the list items will be inserted
+const objectListContainer = document.getElementById("objectList");
 
-      // Append the cloned and modified template to the container
-      objectListContainer.appendChild(listItem);
-    });
+// Loop through the list and append the template for each item
+objectList.forEach((obj) => {
+  // Clone the template content
+  const listItem = listItemTemplate.content.cloneNode(true);
+
+  // Replace placeholders with actual data
+  listItem.querySelector("[data-name]").textContent = obj.name;
+  listItem.querySelector("[data-address]").textContent = obj.address;
+  listItem.querySelector("[data-nbill]").textContent = obj.nbill;
+  listItem.querySelector("[data-amount]").textContent = obj.amount;
+
+  // Append the cloned and modified template to the container
+  objectListContainer.appendChild(listItem);
+});
+
 
 </script>
 
+  <script src="../assets/js/table.js"></script>
+  <script src="../assets/js/cardlist.js"></script>
   <script src="../assets/js/index.js"></script>
   </body>
 </html>
