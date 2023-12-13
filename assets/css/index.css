@@ -84,6 +84,17 @@ label {
   background: #506fde !important;
   color: #fff !important;
 }
+.dangerbg {
+  background: #D92D20;
+  color: #fff;
+}
+.dangerbg:hover {
+  background: #fff;
+  color: #D92D20;
+  border: 1px solid #D92D20;
+}
+
+
 .highlighttext {
   color: #506fde;
 }
@@ -146,7 +157,7 @@ label {
   bottom: 100px;
 }
 .info {
-  font-size: 14px;
+  padding-left: 15px;
 }
 
 
@@ -183,19 +194,38 @@ label {
 .blurcard-icon a{
   font-size: 14px;
 }
-.blurtext a{
+.blurtext a, .mail{
   color: #9b9b9d !important;
 }
 
+
 /* modal */
+.success{
+  color: #027A48;
+  text-shadow: 6px 6px 6px rgba(27, 244, 27, 0.1),
+    -12px 22px 12px rgba(11, 234, 52, 0.2);
+}
 .comboInput select, .comboInput input{
   border: transparent !important;
+}
+.modalmeme{
+  font-size: 24px !important;
+}
+.warning{
+  color: #e86e0b;
+  text-shadow: 0px 0px 6px rgba(192, 154, 27, 0.1),
+    0px 0px 12px rgba(217, 103, 26, 0.2);
+}
+.danger{
+  color: #D92D20;
+  text-shadow: 0px 0px 6px rgba(243, 13, 9, 0.1),
+    0px 0px 12px rgba(234, 7, 7, 0.2);
 }
 .whitebtn{
   color: #707174 !important;
 }
 
-.whitebtn:hover, .whitebtn:focus, .active{
+.whitebtn:hover, .whitebtn:focus, .whitebtn:active, .active, .whitebtn:visited{
   background-color: #fff;
   color: #000206 !important;
   border: none !important;
