@@ -1,8 +1,8 @@
 document.getElementById("addNewFlatBtn").addEventListener("click", function () {
   // Create a new div element with the class "newFlat"
-  // var newFlat = document.createElement('div');
-  // newFlat.className = 'newFlat';
-  var newFlat = document.getElementById("newFlat");
+  var newFlat = document.createElement('div');
+  newFlat.className = 'newFlat';
+  var NewFlat = document.getElementById("newFlat");
   // Create the elements for the new unit and its select row
   var unitHeader = document.createElement("h6");
   unitHeader.className = "mt-2";
@@ -23,7 +23,7 @@ document.getElementById("addNewFlatBtn").addEventListener("click", function () {
   newFlat.appendChild(selectRow);
 
   // Append the newFlat div to the body or any other container element
-  document.body.appendChild(newFlat);
+  NewFlat.appendChild(newFlat);
 });
 
 // Function to create a select element
@@ -38,16 +38,16 @@ function createSelect(id, label) {
   option1.textContent = "Select";
 
   var option2 = document.createElement("option");
-  option2.value = "residential";
-  option2.textContent = "Residential";
+  option2.value = "1";
+  option2.textContent = "1";
 
   var option3 = document.createElement("option");
-  option3.value = "commercial";
-  option3.textContent = "Commercial";
+  option3.value = "2";
+  option3.textContent = "2";
 
   var option4 = document.createElement("option");
-  option4.value = "industrial";
-  option4.textContent = "Industrial";
+  option4.value = "3";
+  option4.textContent = "3";
 
   var option5 = document.createElement("option");
   option5.value = "other";
